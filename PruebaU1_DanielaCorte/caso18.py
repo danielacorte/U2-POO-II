@@ -14,25 +14,17 @@ class Equipo:
             return False
         self.unidades -= cantidad
         return True
-
     def __str__(self):
         return f"{self.codigo:<8}{self.nombre:<18}{self.marca:<14}{self.unidades:<8}"
-
-
-# Datos iniciales (dos objetos creados en el programa)
 equipos = [
     Equipo(1, "Multímetro", "Fluke", 10),
     Equipo(2, "Osciloscopio", "Rigol", 4),
 ]
-
-
 def leer_entero(mensaje):
     try:
         return int(input(mensaje))
     except ValueError:
         return None
-
-
 def registrar_equipo():
     nombre = input("Ingrese el nombre del equipo: ")
     marca = input("Ingrese la marca: ")
@@ -44,14 +36,11 @@ def registrar_equipo():
     equipos.append(Equipo(codigo, nombre, marca, unidades))
     print(f"Registrado con el código {codigo}.")
 
-
 def mostrar_equipos():
     print(f"{'Código':<8}{'Nombre':<18}{'Marca':<14}{'Unidades':<8}")
     print("-" * 48)
     for equipo in equipos:
         print(equipo)
-
-
 def prestar_equipo():
     codigo = leer_entero("Ingrese el código del equipo: ")
     encontrado = None
@@ -59,19 +48,15 @@ def prestar_equipo():
         if equipo.codigo == codigo:
             encontrado = equipo
             break
-
     if encontrado is None:
         print("Error: no existe ese código.")
         return
-
     cantidad = leer_entero("Ingrese la cantidad a prestar: ")
     if cantidad is None:
         print("Error: cantidad no válida.")
         return
-
     if encontrado.prestar(cantidad):
         print(f"Listo. Quedan {encontrado.unidades} unidades.")
-
 
 def menu():
     opcion = 0
@@ -93,7 +78,5 @@ def menu():
             print("Hasta luego.")
         else:
             print("Opción no válida")
-
-
 menu()
  
