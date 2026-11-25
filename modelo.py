@@ -31,7 +31,7 @@ class ListaEquipos:
             raise ValueError("Error: las unidades no pueden ser menor o igual a cero.")
         codigo = len(self.listaEquipos) + 1
         self.listaEquipos.append(Equipo(codigo, nombre, marca, unidades))
-        return codigo
+        return f"Equipo registrado correctamente en el codigo: {codigo}"
     def buscar(self, codigo):
         for e in self.listaEquipos:
             if e.codigo == codigo:
@@ -40,7 +40,9 @@ class ListaEquipos:
     def prestar_equipos(self, codigo, cantidad):
         equipo = self.buscar(codigo)
         equipo.prestar(cantidad)
-        return equipo.unidades
+        return True
     def mostrar_equipos(self):
+        if len(self.listaEquipos) == 0:
+            raise ValueError("Lista vacia")
         return self.listaEquipos
     
