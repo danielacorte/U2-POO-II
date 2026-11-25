@@ -29,7 +29,7 @@ def registrar_equipo():
     nombre = input("Ingrese el nombre del equipo: ")
     marca = input("Ingrese la marca: ")
     unidades = leer_entero("Ingrese las unidades: ")
-    if unidades is None or unidades < 0:
+    if unidades is None or unidades <= 0:
         print("Error: unidades no válidas.")
         return
     codigo = len(equipos) + 1
@@ -57,7 +57,6 @@ def prestar_equipo():
         return
     if encontrado.prestar(cantidad):
         print(f"Listo. Quedan {encontrado.unidades} unidades.")
-
 def menu():
     opcion = 0
     while opcion != 4:
